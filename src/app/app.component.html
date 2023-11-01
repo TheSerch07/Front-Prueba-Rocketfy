@@ -1,0 +1,18 @@
+<nav>
+  <ul>
+    <li><a routerLink="/sensors">Sensores</a></li>
+  </ul>
+  <ul>
+    <ng-container *ngIf="!authService.loggedIn(); else loggedIn">
+      <li><a routerLink="/signin">Iniciar sesión</a></li>
+      <li><a routerLink="/signup">Registrarse</a></li>
+    </ng-container>
+    <ng-template #loggedIn>
+      <li><a (click)="authService.logOut()">Cerrar sesión</a></li>
+    </ng-template>
+  </ul>
+</nav>
+
+<section>
+  <router-outlet></router-outlet>
+</section>
