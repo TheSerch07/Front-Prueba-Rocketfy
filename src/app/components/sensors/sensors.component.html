@@ -13,16 +13,9 @@
     [results]="chartData"
     [timeline]="true"
   >
-    <!-- <ng-template let-temperatureHumidityPoint let-i="index" let-visibility="visibility" #tooltipContent>
-      <div class="temperature-point" [style.visibility]="visibility">
-        Temperature: {{ temperatureHumidityPoint.value.temperature }}
-      </div>
-      <div class="humidity-point" [style.visibility]="visibility">
-        Humidity: {{ temperatureHumidityPoint.value.humidity }}
-      </div>
-    </ng-template> -->
+
   </ngx-charts-line-chart>
-  <button (click)="selectSensor(1)">Sensor de Clima</button>
-  <button (click)="selectSensor(2)">Sensor Meteorológico</button>
-  <button (click)="selectSensor(3)">Sensor Ambiental</button>
+  <button *ngFor="let sensor of sensors" (click)="selectSensor(sensor.id)">{{ sensor.name }}</button>
+
+  <button (click)="getAverage()">Ver Promedio</button>
 </section>

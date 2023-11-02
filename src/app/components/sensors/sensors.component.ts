@@ -24,6 +24,12 @@ interface Sensor {
   styleUrls: ['./sensors.component.css']
 })
 export class SensorsComponent {
+  sensors = [
+    { id: 1, name: 'Sensor de Clima' },
+    { id: 2, name: 'Sensor Meteorológico' },
+    { id: 3, name: 'Sensor Ambiental' }
+  ];
+
   sensorData: Sensor = {
     _id: {
       $oid: ''
@@ -39,13 +45,19 @@ export class SensorsComponent {
 
   selectSensor(sensorId: number) {
     this.sensorsService.selectSensor(sensorId);
-    console.log(sensorId);
 
     this.sensorsService.getSensors().subscribe((sensorData: any) => {
-      console.log(`Selected Sensor ${sensorId}:`, sensorData);
       this.sensorData = sensorData;
       this.updateChartData(sensorId);
     });
+  }
+
+  getAverage() {
+    this.sensorsService.average();
+
+    this.sensorsService.recibeAverage().subscribe((average: any) => {
+      console.log('Lo traje bien', average)
+    })
   }
 
   updateChartData(sensorId: number) {

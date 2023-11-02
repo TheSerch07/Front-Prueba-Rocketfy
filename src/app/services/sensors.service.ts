@@ -18,22 +18,18 @@ export class SensorsService {
         })
 
         this.socket.on('select sensor', (sensor: any) => {
-          console.log(sensor)
           observer.next(sensor)
         });
 
         this.socket.on('sensor data change 1', (sensor: any) => {
-          console.log(sensor)
           observer.next(sensor)
         });
 
         this.socket.on('sensor data change 2', (sensor: any) => {
-          console.log(sensor)
           observer.next(sensor)
         });
 
         this.socket.on('sensor data change 3', (sensor: any) => {
-          console.log(sensor)
           observer.next(sensor)
         });
 
@@ -48,8 +44,37 @@ export class SensorsService {
     })
   }
 
+  public recibeAverage() {
+
+    return new Observable(observer => {
+      try {
+        this.socket.on('average', (average: any) => {
+          observer.next(average)
+        })
+
+        this.socket.on('average data 1', (averages: any) => {
+          observer.next(averages);
+        });
+
+        this.socket.on('average data 2', (averages: any) => {
+          observer.next(averages);
+        });
+
+        this.socket.on('average data 3', (averages: any) => {
+          observer.next(averages);
+        });
+        
+      } catch(e) {
+        observer.error(e)
+      }
+    })
+  }
+
+  public average() {
+    this.socket.emit('average')
+  }
+
   public selectSensor(sensorId: number) {
-    // Envía una solicitud al servidor para seleccionar un sensor por su ID
     this.socket.emit('select sensor', sensorId);
   }
 }
