@@ -15,7 +15,8 @@
   >
 
   </ngx-charts-line-chart>
-  <button *ngFor="let sensor of sensors" (click)="selectSensor(sensor.id)">{{ sensor.name }}</button>
-
+  <div class="button-container">
+    <button *ngFor="let sensor of sensors" (click)="selectSensor(sensor.id)">{{ sensor.name }}</button>
+  </div>
   <button (click)="getAverage()">Ver Promedio</button>
 </section>

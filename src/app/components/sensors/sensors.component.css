@@ -1,0 +1,25 @@
+section {
+    margin-top: 75px;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row; /* Los botones se alinearán horizontalmente */
+    margin-top: 30px;
+    justify-content: center
+}
+  
+  /* Estilos para los botones */
+button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    background: linear-gradient(45deg,#ed3900,#ff7600);
+    color: #fff; /* Color de texto del botón */
+    border: none;
+    border-radius: 5px; /* Bordes redondeados */
+    cursor: pointer;
+}
+  
+button:hover {
+    background-color: #0056b3;
+}
